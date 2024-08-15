@@ -21,7 +21,7 @@ class Ws_Param(object):
         self.APISecret = APISecret
         self.Text = Text
         self.CommonArgs = {"app_id": self.APPID}
-        self.BusinessArgs = {"aue": "raw", "auf": "audio/L16;rate=16000", "vcn": "x4_lingxiaolu_en", "tte": "utf8"}
+        self.BusinessArgs = {"aue": "raw", "auf": "audio/L16;rate=16000", "vcn": "", "tte": "utf8"}
         # 确保文本内容正确编码为 Base64
         self.Data = {"status": 2, "text": str(base64.b64encode(self.Text.encode('utf-8')), "UTF8")}
 
@@ -94,7 +94,7 @@ def on_close(ws, close_status_code, close_msg):
 
 def on_open(ws):
     def run(*args):
-        text_file_path = 'D:/下载/tts_ws_python3_demo/tts_ws_python3_demo/tts_ws_python3_demo/conference.docx'
+        text_file_path = ''
         text_content = read_text_from_word(text_file_path)
 
         # 确保文本内容正常
@@ -119,8 +119,8 @@ def convert_pcm_to_wav(pcm_file, wav_file):
 
 
 if __name__ == "__main__":
-    wsParam = Ws_Param(APPID='618dc58b', APISecret='Y2IyNmY2NWRiYmEwM2JjMWMyYjFlODQ1',
-                       APIKey='d06f53d1c5c450435ae01d2c6791a3eb',
+    wsParam = Ws_Param(APPID='', APISecret='',
+                       APIKey='',
                        Text="")
     websocket.enableTrace(False)
     wsUrl = wsParam.create_url()
